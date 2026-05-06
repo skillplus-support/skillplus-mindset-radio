@@ -31,15 +31,34 @@ GitHub Pagesを有効化すると、以下のURLでアクセス可能になる�
 
 ---
 
-## エピソードを追加する時
+## エピソードを追加する（推奨：自動化スクリプト）
+
+```bash
+cd ~/dev/skillplus-mindset-radio
+
+# 例：マインドセット⑤を追加してそのままpushまで
+python3 scripts/add_episode.py \
+  ~/Desktop/マインドセット⑤.m4a \
+  5 \
+  "他人と比べた瞬間、人生は他人のもの" \
+  "他人と比べる時間を、自分の歩幅を確かめる時間に使え。" \
+  --push
+```
+
+`--push` を付けると commit & push まで自動。
+GitHub Pagesは1〜3分で反映、YouTube Music は次回フィード取得時に新エピソードを認識する。
+
+`--push` を外すと、podcast.xml 更新だけで止まる（手動pushしたい場合）。
+
+## エピソードを追加する（手動）
+
+スクリプト使わず手動でやる場合：
 
 1. 新しい音声ファイルを `audio/05.m4a` として配置
 2. `podcast.xml` の `<channel>` 内に新しい `<item>` ブロックを追加（既存のフォーマットを参考に）
 3. ファイルサイズと再生時間を取得して入れる：
    ```bash
    ffprobe -v error -show_entries format=duration -of csv=p=0 audio/05.m4a
-   ls -la audio/05.m4a  # サイズ取得
+   ls -la audio/05.m4a
    ```
 4. commit & push
-
-GitHub Pagesは数分以内に反映され、YouTube Music等のクライアントは次回フィード取得時に新エピソードを認識する。

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マインドセットラジオ｜端末インストール手順</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --primary: #1e3a8a;
+    --primary-dark: #0f1f4d;
+    --accent: #1d4ed8;
+    --success: #16a34a;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* ========== ヘッダー ========== */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f1f4d 100%);
+    color: #fff;
+    padding: 60px 24px 50px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.4;
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+  }
+  .hero p {
+    font-size: 14px;
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ========== STEPカード ========== */
+  .step {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 20px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(15, 31, 77, 0.06);
+    border: 1px solid var(--border);
+  }
+  .step.completed {
+    border-color: var(--success);
+  }
+  .step-pill {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .step.completed .step-pill {
+    background: var(--success);
+  }
+  .step h2 {
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .step.completed h2 {
+    color: var(--success);
+  }
+  .step .desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+
+  /* ========== App Store / Google Play ボタン ========== */
+  .icon-yt {
+    text-align: center;
+    margin: 8px 0 20px;
+  }
+  .icon-yt-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .icon-yt-circle svg { width: 28px; height: 28px; }
+  .store-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    transition: opacity 0.2s;
+  }
+  .store-button:hover { opacity: 0.85; }
+  .store-button .small { font-size: 9px; opacity: 0.8; display: block; }
+  .store-button .big { font-size: 14px; font-weight: 700; }
+
+  /* ========== スクショプレースホルダー ========== */
+  .screenshot-placeholder {
+    margin: 0 auto;
+    width: 240px;
+    aspect-ratio: 9 / 19;
+    background: #f3f4f6;
+    border: 2px dashed #cbd5e1;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--muted);
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    position: relative;
+  }
+  .screenshot-placeholder strong {
+    display: block;
+    font-size: 14px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+  }
+  .screenshot-placeholder .annotation {
+    color: #ef4444;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* ========== コピーURLボックス ========== */
+  .copy-section {
+    margin: 16px auto 0;
+  }
+  .copy-prompt {
+    text-align: center;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .copy-box {
+    width: 100%;
+    border: 2px dashed #93c5fd;
+    border-radius: 12px;
+    padding: 16px;
+    background: #f0f7ff;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .copy-box:active { background: #dbeafe; }
+  .copy-box .label {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .copy-box .url {
+    word-break: break-all;
+    background: #fff;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    color: #334155;
+  }
+  .copy-box .tap-here {
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .copy-box.copied {
+    border-color: var(--success);
+    background: #f0fdf4;
+  }
+  .copy-box.copied .label {
+    color: var(--success);
+  }
+
+  /* ========== 完了ステップの装飾 ========== */
+  .done-icon {
+    text-align: center;
+    margin: 8px 0 12px;
+  }
+  .done-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--success);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* ========== お問い合わせフッター ========== */
+  .contact {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
+  .contact h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  .contact p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    line-height: 1.7;
+  }
+  .contact a.line-button {
+    display: inline-block;
+    background: #06c755;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ========== レスポンシブ ========== */
+  @media (max-width: 480px) {
+    .hero { padding: 48px 20px 40px; margin-bottom: 16px; }
+    .hero h1 { font-size: 22px; }
+    .step { padding: 20px 16px 24px; }
+    .step h2 { font-size: 19px; }
+    .screenshot-placeholder { width: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>みかみのマインドセットラジオ｜スキルプラス<br>端末インストール手順</h1>
+  <p>下記の手順にて、音声プログラムをインストールしてください。</p>
+</header>
+
+<div class="container">
+
+  <!-- STEP 1 -->
+  <section class="step">
+    <span class="step-pill">STEP 1</span>
+    <h2>YouTube Music アプリを準備</h2>
+    <p class="desc">まずは専用アプリをスマートフォンにインストールします。</p>
+    <div class="icon-yt">
+      <span class="icon-yt-circle">
+        <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6c-1 .3-1.8 1.1-2.1 2.1C0 8 0 12 0 12s0 4 .5 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6c1-.3 1.8-1.1 2.1-2.1.5-1.8.5-5.8.5-5.8s0-4-.5-5.8zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+      </span>
+    </div>
+    <div class="store-buttons">
+      <a class="store-button" href="https://apps.apple.com/jp/app/youtube-music/id1017492454" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        <span><span class="small">DOWNLOAD ON</span><span class="big">App Store</span></span>
+      </a>
+      <a class="store-button" href="https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#34A853" d="M3.609 1.814L13.792 12 3.609 22.186c-.302-.32-.487-.749-.487-1.214V3.028c0-.465.185-.894.487-1.214z"/><path fill="#FBBC04" d="M16.81 8.388l-3.018 3.612 3.018 3.612 3.97-2.36c1.35-.81 1.35-2.694 0-3.504l-3.97-2.36z"/><path fill="#EA4335" d="M3.609 1.814l13.201 7.574-3.018 2.612L3.609 1.814z"/><path fill="#4285F4" d="M3.609 22.186l13.201-7.574-3.018-2.612L3.609 22.186z"/></svg>
+        <span><span class="small">GET IT ON</span><span class="big">Google Play</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step">
+    <span class="step-pill">STEP 2</span>
+    <h2>ライブラリを開く</h2>
+    <p class="desc">アプリを起動し、右下の「ライブラリ」をタップします。</p>
+    <div class="screenshot-placeholder">
+      <strong>STEP 2 用スクリーンショット</strong>
+      <span>YouTube Music のホーム画面</span>
+      <span class="annotation">▼ 右下「ライブラリ」を赤丸で強調</span>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step">
+    <span class="step-pill">STEP 3</span>
+    <h2>ポッドキャストに切り替え</h2>
+    <p class="desc">上部のメニューをスライドし、「ポッドキャスト」を選択します。</p>
+    <div class="screenshot-placeholder">
+      <strong>STEP 3 用スクリーンショット</strong>
+      <span>ライブラリ画面</span>
+      <span class="annotation">▼ 上部「ポッドキャスト」タブを赤枠＋矢印</span>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step">
+    <span class="step-pill">STEP 4</span>
+    <h2>追加ボタンをタップ</h2>
+    <p class="desc">「ポッドキャストを追加」ボタンを押します。</p>
+    <div class="screenshot-placeholder">
+      <strong>STEP 4 用スクリーンショット</strong>
+      <span>ポッドキャストライブラリ画面</span>
+      <span class="annotation">▼ 右下「+ ポッドキャストを追加」を赤枠＋矢印</span>
+    </div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step">
+    <span class="step-pill">STEP 5</span>
+    <h2>RSSフィードを選択</h2>
+    <p class="desc">「RSSフィードで追加」を選択します。</p>
+    <div class="screenshot-placeholder">
+      <strong>STEP 5 用スクリーンショット</strong>
+      <span>ポッドキャスト追加メニュー</span>
+      <span class="annotation">▼ 「RSSフィードで追加」を赤枠＋矢印</span>
+    </div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="step">
+    <span class="step-pill">STEP 6</span>
+    <h2>URLを貼り付けて完了</h2>
+    <p class="desc">下の枠をタップしてコピーし、アプリに貼り付けてください。</p>
+
+    <div class="copy-section">
+      <div class="copy-prompt">タップして自動コピー</div>
+      <div class="copy-box" id="copyBox" onclick="copyURL()">
+        <div class="label" id="copyLabel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          <span id="copyText">RSSフィードURL</span>
+        </div>
+        <div class="url">https://skillplus-support.github.io/skillplus-mindset-radio/podcast.xml</div>
+        <div class="tap-here" id="tapHere">↑ ここをタップ</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div class="screenshot-placeholder">
+        <strong>STEP 6 用スクリーンショット</strong>
+        <span>YouTube Music RSS入力ダイアログ</span>
+        <span class="annotation">▼ URL入力欄を赤枠＋矢印</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 7 -->
+  <section class="step completed">
+    <span class="step-pill">STEP 7</span>
+    <h2>完了！</h2>
+    <p class="desc">追加されると、いつでも音声をお聴きいただけます。</p>
+    <div class="done-icon">
+      <span class="done-icon-circle">✓</span>
+    </div>
+    <div class="screenshot-placeholder">
+      <strong>STEP 7 用スクリーンショット</strong>
+      <span>追加された「みかみのマインドセットラジオ」</span>
+      <span class="annotation">エピソード一覧が表示された画面</span>
+    </div>
+  </section>
+
+  <!-- 問い合わせ -->
+  <section class="contact">
+    <div class="contact-icon">💬</div>
+    <h3>ご不明な点がある場合</h3>
+    <p>
+      スキルプラスサポートLINEまでご連絡ください。<br>
+      「マインドセットラジオの件」とお伝えいただけるとスムーズです。
+    </p>
+    <!-- LINE誘導ボタン（後でURL差し替え）
+    <a class="line-button" href="#">LINEで問い合わせる</a>
+    -->
+  </section>
+
+</div>
+
+<script>
+  function copyURL() {
+    const url = "https://skillplus-support.github.io/skillplus-mindset-radio/podcast.xml";
+    const box = document.getElementById('copyBox');
+    const text = document.getElementById('copyText');
+    const tapHere = document.getElementById('tapHere');
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        box.classList.add('copied');
+        text.textContent = 'コピー完了！';
+        tapHere.textContent = 'YouTube Music で貼り付けてください';
+        setTimeout(() => {
+          box.classList.remove('copied');
+          text.textContent = 'RSSフィードURL';
+          tapHere.textContent = '↑ ここをタップ';
+        }, 3000);
+      });
+    } else {
+      // フォールバック
+      const tmp = document.createElement('textarea');
+      tmp.value = url;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand('copy');
+      document.body.removeChild(tmp);
+      box.classList.add('copied');
+      text.textContent = 'コピー完了！';
+    }
+  }
+</script>
+
+</body>
+</html>

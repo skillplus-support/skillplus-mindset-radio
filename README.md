@@ -25,9 +25,9 @@ GitHub Pages で podcast.xml と音声ファイルを公開し、YouTube Music �
 
 GitHub Pagesを有効化すると、以下のURLでアクセス可能になる：
 
-- ポッドキャストRSS：`https://[アカウント名].github.io/skillplus-mindset-radio/podcast.xml`
-- カバー画像：`https://[アカウント名].github.io/skillplus-mindset-radio/cover.jpg`
-- 各エピソード：`https://[アカウント名].github.io/skillplus-mindset-radio/audio/01.m4a` 等
+- ポッドキャストRSS：`https://skillplus-support.github.io/skillplus-mindset-radio/podcast.xml`
+- カバー画像：`https://skillplus-support.github.io/skillplus-mindset-radio/cover.jpg`
+- 各エピソード：`https://skillplus-support.github.io/skillplus-mindset-radio/audio/01.m4a` 等
 
 ---
 

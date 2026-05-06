@@ -4,7 +4,7 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>みかみのマインドセットラジオ｜スキルプラス</title>
-    <link>https://[ACCOUNT].github.io/skillplus-mindset-radio/</link>
+    <link>https://skillplus-support.github.io/skillplus-mindset-radio/</link>
     <description>スキルプラス受講生のマインドセット向上を目的とした、社長 みかみ（三上功太）による音声プログラム。</description>
     <language>ja</language>
     <copyright>© アドネス株式会社</copyright>
@@ -14,7 +14,7 @@
       <itunes:name>スキルプラス</itunes:name>
       <itunes:email>support@skillplus.example</itunes:email>
     </itunes:owner>
-    <itunes:image href="https://[ACCOUNT].github.io/skillplus-mindset-radio/cover.jpg"/>
+    <itunes:image href="https://skillplus-support.github.io/skillplus-mindset-radio/cover.jpg"/>
     <itunes:category text="Education">
       <itunes:category text="Self-Improvement"/>
     </itunes:category>
@@ -24,7 +24,7 @@
     <item>
       <title>#01 苦しみは減らせない。喜びを増やせ</title>
       <description><![CDATA[マインドセットがすべて。苦しみは減らせない、しかし喜びは増やせる。喜びを増やす方向に走れ。]]></description>
-      <enclosure url="https://[ACCOUNT].github.io/skillplus-mindset-radio/audio/01.m4a" length="17128462" type="audio/x-m4a"/>
+      <enclosure url="https://skillplus-support.github.io/skillplus-mindset-radio/audio/01.m4a" length="17128462" type="audio/x-m4a"/>
       <guid isPermaLink="false">skillplus-mindset-radio-01</guid>
       <pubDate>Sun, 06 Apr 2026 09:00:00 +0900</pubDate>
       <itunes:author>みかみ（三上功太）</itunes:author>
@@ -36,7 +36,7 @@
     <item>
       <title>#02 うちが世界で一番簡単に成長できる場所だ</title>
       <description><![CDATA[スキルプラスの3つの定義：全く新しい学び方／世界で一番簡単に成長できる場所／史上最高のオンラインスクール。ギブベースで「ありがとう」と言われる人間を増やす礎を作っている。]]></description>
-      <enclosure url="https://[ACCOUNT].github.io/skillplus-mindset-radio/audio/02.m4a" length="3487334" type="audio/x-m4a"/>
+      <enclosure url="https://skillplus-support.github.io/skillplus-mindset-radio/audio/02.m4a" length="3487334" type="audio/x-m4a"/>
       <guid isPermaLink="false">skillplus-mindset-radio-02</guid>
       <pubDate>Sun, 13 Apr 2026 09:00:00 +0900</pubDate>
       <itunes:author>みかみ（三上功太）</itunes:author>
@@ -48,7 +48,7 @@
     <item>
       <title>#03 やらずにビビるな。投げて、外したら直せ</title>
       <description><![CDATA[やらずにビビるな。とにかく投げろ。外したら次の調整に繋がる。フィードバックループを回すことが、人間が成長する唯一の方法。]]></description>
-      <enclosure url="https://[ACCOUNT].github.io/skillplus-mindset-radio/audio/03.m4a" length="3477783" type="audio/x-m4a"/>
+      <enclosure url="https://skillplus-support.github.io/skillplus-mindset-radio/audio/03.m4a" length="3477783" type="audio/x-m4a"/>
       <guid isPermaLink="false">skillplus-mindset-radio-03</guid>
       <pubDate>Sun, 20 Apr 2026 09:00:00 +0900</pubDate>
       <itunes:author>みかみ（三上功太）</itunes:author>
@@ -60,7 +60,7 @@
     <item>
       <title>#04 「忙しい」と言ったら試合終了</title>
       <description><![CDATA[「忙しい」と口にした瞬間、それは諦めの宣言になる。試合終了したくないなら、目標を下げるか、基準値を上げるかの二択を選べ。]]></description>
-      <enclosure url="https://[ACCOUNT].github.io/skillplus-mindset-radio/audio/04.m4a" length="4055965" type="audio/x-m4a"/>
+      <enclosure url="https://skillplus-support.github.io/skillplus-mindset-radio/audio/04.m4a" length="4055965" type="audio/x-m4a"/>
       <guid isPermaLink="false">skillplus-mindset-radio-04</guid>
       <pubDate>Tue, 06 May 2026 09:00:00 +0900</pubDate>
       <itunes:author>みかみ（三上功太）</itunes:author>

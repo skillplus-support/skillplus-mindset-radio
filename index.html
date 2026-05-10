@@ -249,7 +249,7 @@ function formatDate(rfc822) {
   } catch (e) { return ''; }
 }
 
-function renderEpisode(ep, isLatest) {
+function renderEpisode(ep, isLatest, idx) {
   const cardClass = isLatest ? 'episode-card latest' : 'episode-card';
   const num = String(ep.episode || '?').padStart(2, '0');
   return `
@@ -261,9 +261,76 @@ function renderEpisode(ep, isLatest) {
         ${ep.duration ? `<span>🕐 ${escapeHtml(ep.duration)}</span>` : ''}
         ${ep.pubDate ? `<span>📅 ${formatDate(ep.pubDate)}</span>` : ''}
       </div>
-      <audio controls preload="none" src="${escapeHtml(ep.url)}"></audio>
+      <audio controls preload="none" playsinline src="${escapeHtml(ep.url)}" data-ep-idx="${idx}"></audio>
     </div>
   `;
+}
+
+// バックグラウンド再生 + ロック画面コントロール（iOS / Android対応）
+let allEpisodes = [];
+
+function setupBackgroundPlayback() {
+  const audios = document.querySelectorAll('audio[data-ep-idx]');
+  audios.forEach(audio => {
+    audio.addEventListener('play', () => {
+      // 他の audio を全部止める（同時再生防止）
+      audios.forEach(other => {
+        if (other !== audio && !other.paused) other.pause();
+      });
+      // Media Session メタデータ設定（ロック画面・通知センター表示用）
+      const idx = parseInt(audio.dataset.epIdx, 10);
+      const ep = allEpisodes[idx];
+      if (ep && 'mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: ep.title,
+          artist: 'みかみ（三上功太）',
+          album: 'みかみのマインドセットラジオ',
+          artwork: [
+            { src: 'cover.jpg', sizes: '512x512', type: 'image/jpeg' },
+            { src: 'cover.jpg', sizes: '256x256', type: 'image/jpeg' },
+          ],
+        });
+        navigator.mediaSession.setActionHandler('play', () => audio.play());
+        navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+        try {
+          navigator.mediaSession.setActionHandler('seekto', (d) => {
+            if (d.seekTime !== undefined && !isNaN(audio.duration)) {
+              audio.currentTime = d.seekTime;
+            }
+          });
+          navigator.mediaSession.setActionHandler('seekbackward', (d) => {
+            const skip = d.seekOffset || 15;
+            audio.currentTime = Math.max(0, audio.currentTime - skip);
+          });
+          navigator.mediaSession.setActionHandler('seekforward', (d) => {
+            const skip = d.seekOffset || 15;
+            audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + skip);
+          });
+          // 前後のエピソードへスキップ
+          navigator.mediaSession.setActionHandler('previoustrack', () => {
+            const prev = audios[idx + 1];  // idx降順なので次index = 古い回
+            if (prev) { audio.pause(); prev.play(); prev.scrollIntoView({behavior:'smooth', block:'center'}); }
+          });
+          navigator.mediaSession.setActionHandler('nexttrack', () => {
+            const next = audios[idx - 1];  // idx降順なので前index = 新しい回
+            if (next) { audio.pause(); next.play(); next.scrollIntoView({behavior:'smooth', block:'center'}); }
+          });
+        } catch (e) { /* 一部ブラウザは未対応 */ }
+      }
+    });
+    // 再生位置を Media Session に伝える（プログレスバー連動用）
+    audio.addEventListener('timeupdate', () => {
+      if ('mediaSession' in navigator && navigator.mediaSession.setPositionState && !isNaN(audio.duration)) {
+        try {
+          navigator.mediaSession.setPositionState({
+            duration: audio.duration,
+            playbackRate: audio.playbackRate,
+            position: audio.currentTime,
+          });
+        } catch (e) {}
+      }
+    });
+  });
 }
 
 function getText(item, tag) {
@@ -301,6 +368,7 @@ async function loadFeed() {
       return;
     }
 
+    allEpisodes = episodes;  // Media Session で参照
     const [latest, ...past] = episodes;
     let html = `
       <section class="latest-section">
@@ -308,14 +376,14 @@ async function loadFeed() {
           <span class="badge">LATEST</span>
           最新エピソード
         </div>
-        ${renderEpisode(latest, true)}
+        ${renderEpisode(latest, true, 0)}
       </section>
     `;
     if (past.length > 0) {
       html += `
         <section class="past-section">
           <h2>過去のエピソード</h2>
-          ${past.map(ep => renderEpisode(ep, false)).join('')}
+          ${past.map((ep, i) => renderEpisode(ep, false, i + 1)).join('')}
         </section>
       `;
     }
@@ -327,6 +395,7 @@ async function loadFeed() {
       </section>
     `;
     root.innerHTML = html;
+    setupBackgroundPlayback();
   } catch (err) {
     console.error(err);
     root.innerHTML = `<div class="error">読み込みに失敗しました：${escapeHtml(err.message)}</div>`;

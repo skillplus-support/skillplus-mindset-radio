@@ -69,5 +69,17 @@
       <itunes:explicit>false</itunes:explicit>
     </item>
 
+    <item>
+      <title>#05 反対されたら、結果で返せ</title>
+      <description><![CDATA[身近な人ほど反対する。それは心配の裏返し。無視ではなく、結果を出して安心させろ。]]></description>
+      <enclosure url="https://skillplus-support.github.io/skillplus-mindset-radio/audio/05.m4a" length="4431901" type="audio/x-m4a"/>
+      <guid isPermaLink="false">skillplus-mindset-radio-05</guid>
+      <pubDate>Sun, 10 May 2026 17:51:03 +0900</pubDate>
+      <itunes:author>みかみ（三上功太）</itunes:author>
+      <itunes:duration>08:18</itunes:duration>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+
   </channel>
 </rss>

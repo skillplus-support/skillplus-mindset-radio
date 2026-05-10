@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みかみのマインドセットラジオ｜スキルプラス</title>
+<meta name="description" content="スキルプラス受講生向け、社長みかみによる音声プログラム。">
+<meta property="og:title" content="みかみのマインドセットラジオ｜スキルプラス">
+<meta property="og:description" content="スキルプラス受講生向け、社長みかみによる音声プログラム。">
+<meta property="og:image" content="https://skillplus-support.github.io/skillplus-mindset-radio/cover.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --primary: #1e3a8a;
+    --primary-dark: #0f1f4d;
+    --accent: #1d4ed8;
+    --accent-light: #dbeafe;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* ========== ヘッダー ========== */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f1f4d 100%);
+    color: #fff;
+    padding: 48px 24px 40px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .hero-cover {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .hero h1 {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.4;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em;
+  }
+  .hero p {
+    font-size: 13px;
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ========== 最新回（ヒーローカード） ========== */
+  .latest-section {
+    margin-bottom: 32px;
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin: 0 4px 12px;
+    text-transform: uppercase;
+  }
+  .section-label .badge {
+    background: var(--primary);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .episode-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(15, 31, 77, 0.06);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .episode-card.latest {
+    border-color: var(--primary);
+    border-width: 2px;
+    box-shadow: 0 4px 24px rgba(30, 58, 138, 0.12);
+  }
+  .episode-num {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .episode-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .episode-card.latest .episode-title {
+    font-size: 22px;
+    color: var(--primary-dark);
+  }
+  .episode-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    line-height: 1.7;
+  }
+  .episode-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .episode-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ========== オーディオプレイヤー ========== */
+  audio {
+    width: 100%;
+    border-radius: 999px;
+    margin-top: 4px;
+  }
+  audio::-webkit-media-controls-panel {
+    background-color: #f0f4fa;
+  }
+
+  /* ========== 過去回セクション ========== */
+  .past-section h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 0 4px 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ========== その他のアプリで聴く ========== */
+  .other-apps {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 20px;
+    border: 1px solid var(--border);
+    margin-top: 32px;
+    text-align: center;
+  }
+  .other-apps h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .other-apps p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .install-link {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: opacity 0.2s;
+  }
+  .install-link:hover { opacity: 0.85; }
+
+  /* ========== ローディング/エラー ========== */
+  .loading, .error {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .error {
+    color: #dc2626;
+  }
+
+  /* ========== レスポンシブ ========== */
+  @media (max-width: 480px) {
+    .hero { padding: 36px 20px 32px; }
+    .hero-cover { width: 100px; height: 100px; }
+    .hero h1 { font-size: 20px; }
+    .episode-card { padding: 20px 16px; }
+    .episode-card.latest .episode-title { font-size: 19px; }
+    .episode-title { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>みかみのマインドセットラジオ</h1>
+  <p>スキルプラス受講生向け｜社長みかみの音声プログラム</p>
+</header>
+
+<div class="container" id="root">
+  <div class="loading">読み込み中...</div>
+</div>
+
+<script>
+const FEED_URL = 'podcast.xml';
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatDate(rfc822) {
+  try {
+    const d = new Date(rfc822);
+    if (isNaN(d.getTime())) return '';
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+  } catch (e) { return ''; }
+}
+
+function renderEpisode(ep, isLatest) {
+  const cardClass = isLatest ? 'episode-card latest' : 'episode-card';
+  const num = String(ep.episode || '?').padStart(2, '0');
+  return `
+    <div class="${cardClass}">
+      <div class="episode-num">EPISODE ${num}</div>
+      <h3 class="episode-title">${escapeHtml(ep.title)}</h3>
+      <p class="episode-desc">${escapeHtml(ep.description)}</p>
+      <div class="episode-meta">
+        ${ep.duration ? `<span>🕐 ${escapeHtml(ep.duration)}</span>` : ''}
+        ${ep.pubDate ? `<span>📅 ${formatDate(ep.pubDate)}</span>` : ''}
+      </div>
+      <audio controls preload="none" src="${escapeHtml(ep.url)}"></audio>
+    </div>
+  `;
+}
+
+function getText(item, tag) {
+  const el = item.getElementsByTagName(tag)[0];
+  return el ? (el.textContent || '').trim() : '';
+}
+
+function getAttr(item, tag, attr) {
+  const el = item.getElementsByTagName(tag)[0];
+  return el ? (el.getAttribute(attr) || '') : '';
+}
+
+async function loadFeed() {
+  const root = document.getElementById('root');
+  try {
+    const res = await fetch(FEED_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const xml = await res.text();
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    const parserError = doc.getElementsByTagName('parsererror')[0];
+    if (parserError) throw new Error('XML parse error');
+
+    const items = Array.from(doc.getElementsByTagName('item'));
+    const episodes = items.map(item => ({
+      title: getText(item, 'title').replace(/^#\d+\s*/, ''),  // "#05 タイトル" → "タイトル"
+      description: getText(item, 'description'),
+      url: getAttr(item, 'enclosure', 'url'),
+      duration: getText(item, 'itunes:duration'),
+      pubDate: getText(item, 'pubDate'),
+      episode: parseInt(getText(item, 'itunes:episode') || '0', 10),
+    })).sort((a, b) => b.episode - a.episode);
+
+    if (episodes.length === 0) {
+      root.innerHTML = '<div class="error">エピソードが見つかりませんでした。</div>';
+      return;
+    }
+
+    const [latest, ...past] = episodes;
+    let html = `
+      <section class="latest-section">
+        <div class="section-label">
+          <span class="badge">LATEST</span>
+          最新エピソード
+        </div>
+        ${renderEpisode(latest, true)}
+      </section>
+    `;
+    if (past.length > 0) {
+      html += `
+        <section class="past-section">
+          <h2>過去のエピソード</h2>
+          ${past.map(ep => renderEpisode(ep, false)).join('')}
+        </section>
+      `;
+    }
+    html += `
+      <section class="other-apps">
+        <h3>📱 他のアプリでも聴けます</h3>
+        <p>YouTube Music / Apple Podcast 等で<br>サブスクライブして聴くこともできます。</p>
+        <a class="install-link" href="install.html">セットアップ手順を見る →</a>
+      </section>
+    `;
+    root.innerHTML = html;
+  } catch (err) {
+    console.error(err);
+    root.innerHTML = `<div class="error">読み込みに失敗しました：${escapeHtml(err.message)}</div>`;
+  }
+}
+
+loadFeed();
+</script>
+
+</body>
+</html>
